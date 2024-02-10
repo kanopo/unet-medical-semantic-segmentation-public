@@ -1,0 +1,41 @@
+
+# Configuration file for medical image segmentation model
+
+[GENERAL]
+IMAGE_WIDTH = 1280
+IMAGE_HEIGHT = 876
+
+[CROSS_VALIDATION]
+EPOCHS = 120
+LEARNING_RATE = 1e-3
+WEIGHT_DECAY = 1e-8
+BATCH_SIZE = 4
+CONV_DROPOUT = 0.0
+FINAL_DROPOUT = 0.0
+NUM_FOLDS = 5
+PATH_CROSS_VALIDATION_DATA = "./../data/0.3 - labels/"
+
+[TRAINING]
+EPOCHS = 200
+LEARNING_RATE = 1e-3
+WEIGHT_DECAY = 1e-8
+BATCH_SIZE = 4
+CONV_DROPOUT = 0.0
+FINAL_DROPOUT = 0.0
+SAVE_WEIGHTS = true
+PATH_WEIGHTS = "./weigths.pth"
+PATH_TRAINING_DATA = "./../data/0.3 - labels/"
+
+[PREDICTION]
+INPUT_FOLDER = "./../data/0.4 - validation/base/"
+OUTPUT_FOLDER = "./../results_original/"
+PATH_WEIGHTS = "./../../../../weigths-original-no-data-aug.pth"
+
+# WARN: the commented out options are all the options available
+# OPTIONS = ["extracted_mask", "extracted_femur", "histogram_distribution"]
+# METRICS = ["mean", "variance", "std", "percentile"]
+OPTIONS = ["extracted_mask", "extracted_femur", "histogram_distribution"]
+METRICS = ["mean", "variance", "std", "percentile"]
+
+# The PERCENTILE variable is used to store all the percentiles used when the percentile flag is in the metrics list
+PERCENTILE = [5, 10, 50, 90, 95]
